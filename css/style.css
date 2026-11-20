@@ -1,0 +1,582 @@
+/* ==========================================================
+   e-BOOKING HONEY GROUP - style.css (version corrigée)
+   Charte : bleu (navigation, liens, titres), jaune solaire
+   (actions principales), vert (succès), fond blanc épuré.
+   Retour Sam Rob : moins d'aplats bleus, plus d'aération,
+   jaune mis en avant sur les boutons d'action.
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap');
+
+:root {
+    /* Marque */
+    --color-bleu: #0C60F0;          /* navigation, liens actifs, titres, prix */
+    --color-bleu-fonce: #183153;    /* texte sombre, bleu nuit */
+    --color-jaune: #FCCC00;         /* actions principales */
+    --color-jaune-hover: #EFC000;
+    --color-vert: #60E840;          /* décoratif uniquement (barre, icônes) */
+    --color-vert-texte: #176B3A;    /* vert lisible pour le texte */
+    --color-vert-bouton: #238B4E;
+    --color-rouge: #C0392B;
+
+    /* Neutres */
+    --color-gris-clair: #F5F7FA;
+    --color-fond-carte: #F7F9FC;
+    --color-gris-bordure: #E2E8F0;
+    --color-bordure-douce: #E8EDF4;
+    --color-gris-texte: #64748B;
+    --color-sombre: #183153;
+
+    --font-titres: 'Poppins', Arial, sans-serif;
+    --font-main: 'Open Sans', Arial, sans-serif;
+    --max-width: 1140px;
+    --radius: 8px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font-main);
+    color: var(--color-sombre);
+    line-height: 1.6;
+    background: #fff;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-titres); }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ---------- Header ---------- */
+.site-header {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(24, 49, 83, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; }
+.logo { font-weight: bold; font-size: 1.3rem; color: var(--color-bleu); }
+.main-nav ul { display: flex; gap: 24px; }
+.main-nav a {
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: color .2s ease, border-color .2s ease;
+}
+/* Le bleu signale l'interaction ; le jaune souligne la page active */
+.main-nav a:hover { color: var(--color-bleu); }
+.main-nav a.active,
+.main-nav a[aria-current="page"] {
+    color: var(--color-bleu);
+    border-bottom-color: var(--color-jaune);
+}
+.burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+.burger span { width: 26px; height: 3px; background: var(--color-sombre); border-radius: 2px; }
+
+/* ---------- Hero / recherche ---------- */
+/* Bannière claire (plus d'aplat bleu) avec une légère lueur solaire */
+.hero {
+    background:
+        radial-gradient(circle at 85% 10%, rgba(252, 204, 0, 0.14), transparent 45%),
+        linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 72%);
+    color: var(--color-sombre);
+    padding: 56px 20px;
+    text-align: center;
+    border-bottom: 1px solid var(--color-bordure-douce);
+}
+.hero h1 { font-size: 2rem; margin-bottom: 24px; color: var(--color-sombre); }
+.hero p { color: #526176; }
+
+/* Option : photo aux teintes naturelles avec voile clair.
+   Décommenter et remplacer l'URL par une photo de Madagascar.
+.hero {
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)),
+        url('../img/hero.jpg') center / cover no-repeat;
+}
+*/
+
+.search-bar {
+    background: #fff;
+    border: 1px solid #E6EBF2;
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 12px 32px rgba(24, 49, 83, 0.09);
+}
+.search-bar .field { flex: 1; min-width: 140px; text-align: left; }
+.search-bar label { display: block; font-size: 0.8rem; color: var(--color-gris-texte); margin-bottom: 4px; }
+.search-bar input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D8E0EA;
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: inherit;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-family: inherit;
+    font-size: 1rem;
+}
+/* Jaune solaire : recherche, réservation, actions principales */
+.btn-primary {
+    background: var(--color-jaune);
+    color: var(--color-bleu-fonce);
+    box-shadow: 0 3px 0 rgba(160, 122, 0, 0.12);
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.btn-primary:hover {
+    background: var(--color-jaune-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 12px rgba(160, 122, 0, 0.16);
+}
+.btn-secondary {
+    background: #fff;
+    color: var(--color-bleu);
+    border: 1px solid var(--color-bleu);
+}
+.btn-secondary:hover { background: #F0F6FF; }
+.btn-success { background: var(--color-vert-bouton); color: #fff; }
+.btn-danger { background: var(--color-rouge); color: #fff; }
+.btn-small { padding: 6px 16px; font-size: 0.9rem; }
+
+/* ---------- Sections génériques ---------- */
+.section { padding: 50px 20px; background: #fff; }
+.section h2 {
+    margin-bottom: 28px;
+    font-size: 1.6rem;
+    color: var(--color-bleu);
+    position: relative;
+    padding-bottom: 10px;
+}
+/* Petit trait jaune sous les titres de section */
+.section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--color-jaune);
+    border-radius: 2px;
+}
+
+/* ---------- Grille de cartes ---------- */
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(24, 49, 83, 0.04);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(24, 49, 83, 0.08);
+}
+.card-image {
+    width: 100%;
+    height: 160px;
+    background: #E8EDF4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    overflow: hidden;
+}
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+.card-body { padding: 16px; }
+.card h3 { margin-bottom: 4px; font-size: 1.1rem; }
+.card .price { color: var(--color-bleu); font-weight: 700; margin-top: 8px; }
+.card .meta { color: var(--color-gris-texte); font-size: 0.9rem; }
+
+/* ---------- Page de recherche (filtres + liste) ---------- */
+.search-layout { display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: start; }
+.filters {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+.filters h3 { margin-bottom: 16px; color: var(--color-bleu); }
+.filters .filter-group { margin-bottom: 18px; }
+.filters label { display: block; font-size: 0.9rem; margin-bottom: 6px; color: var(--color-gris-texte); }
+.results-list { display: flex; flex-direction: column; gap: 16px; }
+.result-card {
+    display: flex;
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.result-card .card-image { width: 220px; height: auto; flex-shrink: 0; }
+.result-card .card-body { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+/* ---------- Fiche détaillée ---------- */
+.detail-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
+.detail-photo {
+    width: 100%;
+    height: 350px;
+    background: var(--color-gris-clair);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gris-texte);
+    overflow: hidden;
+}
+.detail-photo img { width: 100%; height: 100%; object-fit: cover; }
+.detail-title { font-size: 1.8rem; margin: 20px 0 4px; }
+.detail-meta { color: var(--color-gris-texte); margin-bottom: 20px; }
+.booking-box {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+.booking-box .price { font-size: 1.4rem; color: var(--color-bleu); font-weight: 700; margin-bottom: 16px; }
+.booking-box label { display: block; font-size: 0.9rem; margin: 10px 0 4px; }
+.booking-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D8E0EA;
+    border-radius: var(--radius);
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+/* ---------- Tunnel de réservation ---------- */
+.tunnel-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: start; }
+.recap-box,
+.form-box {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+.form-box { background: #fff; border-color: var(--color-gris-bordure); }
+.recap-box h3, .form-box h3 { margin-bottom: 16px; }
+.recap-box .total { color: var(--color-bleu); font-size: 1.3rem; font-weight: 700; margin-top: 12px; }
+.form-box label { display: block; font-size: 0.9rem; margin-bottom: 6px; }
+.form-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #D8E0EA;
+    border-radius: var(--radius);
+    background: #fff;
+    margin-bottom: 14px;
+}
+
+/* ---------- Confirmation ---------- */
+.confirmation-box { text-align: center; max-width: 600px; margin: 60px auto; }
+.confirmation-icon { font-size: 60px; color: var(--color-vert-bouton); margin-bottom: 16px; }
+.confirmation-box h1 { color: var(--color-bleu); margin-bottom: 12px; }
+.confirmation-recap {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 20px 0;
+    text-align: left;
+}
+.confirmation-actions { display: flex; gap: 16px; justify-content: center; margin-top: 24px; }
+
+/* ---------- Tableau de bord admin ---------- */
+.kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+.kpi-card {
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+.kpi-card .label { color: var(--color-gris-texte); font-size: 0.9rem; margin-bottom: 6px; }
+.kpi-card .value { font-size: 1.6rem; font-weight: 700; color: var(--color-bleu); }
+.kpi-card.commission .value { color: var(--color-vert-texte); }
+
+.partner-request {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-fond-carte);
+    border: 1px solid var(--color-bordure-douce);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+}
+.partner-request .actions { display: flex; gap: 10px; }
+
+/* ---------- Formulaire de recherche inline (résultats) ---------- */
+.search-bar-slim {
+    background: #fff;
+    border: 1px solid var(--color-gris-bordure);
+    border-radius: var(--radius);
+    padding: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+.search-bar-slim .field { flex: 1; min-width: 140px; }
+.search-bar-slim label { display: block; font-size: 0.8rem; color: var(--color-gris-texte); margin-bottom: 4px; }
+.search-bar-slim input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #D8E0EA;
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: inherit;
+}
+
+/* ---------- Focus des champs (visible, doux) ---------- */
+.search-bar input:focus,
+.search-bar-slim input:focus,
+.booking-box input:focus,
+.form-box input:focus {
+    outline: none;
+    border-color: var(--color-bleu);
+    box-shadow: 0 0 0 3px rgba(12, 96, 240, 0.15);
+}
+
+/* ---------- Footer clair : bleu et jaune restent des accents ---------- */
+.site-footer {
+    background: var(--color-gris-clair);
+    color: var(--color-sombre);
+    border-top: 1px solid var(--color-gris-bordure);
+    padding: 40px 20px 0;
+    margin-top: 60px;
+}
+.footer-inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding-bottom: 24px; }
+.footer-col h4 { margin-bottom: 12px; color: var(--color-bleu); }
+.footer-col p,
+.footer-col a { color: #526176; font-size: 0.9rem; }
+.footer-col a:hover { color: var(--color-bleu); }
+.footer-bottom {
+    text-align: center;
+    padding: 16px 0;
+    border-top: 1px solid var(--color-gris-bordure);
+    font-size: 0.85rem;
+    color: var(--color-gris-texte);
+}
+
+/* ---------- Messages ---------- */
+.alert { padding: 14px 18px; border-radius: var(--radius); margin-bottom: 20px; font-weight: 600; }
+.alert-success { background: #ECFDF3; color: var(--color-vert-texte); border: 1px solid #BFEAB3; }
+.alert-error { background: #FDECEA; color: var(--color-rouge); border: 1px solid #F5C6C0; }
+
+/* ---------- Connexion administrateur ---------- */
+.auth-box { max-width: 420px; margin: 40px auto; }
+
+/* Barre tricolore de marque, fine et discrète */
+.barre-tricolore {
+    height: 4px;
+    background: linear-gradient(90deg,
+        var(--color-bleu) 0 33.33%,
+        var(--color-jaune) 33.33% 66.66%,
+        var(--color-vert) 66.66% 100%);
+}
+
+/* ---------- Admin ---------- */
+.admin-nav { display: flex; align-items: center; gap: 20px; }
+.admin-nav .meta { color: var(--color-gris-texte); font-size: 0.9rem; }
+.inline-form { display: inline; }
+.page-title { color: var(--color-bleu); margin-bottom: 24px; }
+
+/* ---------- Accessibilité ---------- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid rgba(12, 96, 240, 0.35);
+    outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 900px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+    .search-layout, .detail-layout, .tunnel-layout { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+    .burger { display: flex; }
+    .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: #fff;
+        box-shadow: 0 6px 10px rgba(24, 49, 83, 0.08);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .3s ease;
+    }
+    .main-nav.open { max-height: 300px; }
+    .main-nav ul { flex-direction: column; padding: 16px 20px; gap: 16px; }
+    .card-grid { grid-template-columns: 1fr; }
+    .result-card { flex-direction: column; }
+    .result-card .card-image { width: 100%; height: 160px; }
+    .footer-inner { grid-template-columns: 1fr; text-align: center; }
+    .site-footer { padding-top: 30px; }
+    .hero { padding: 38px 16px; }
+    .hero h1 { font-size: 1.65rem; }
+    .search-bar { padding: 14px; }
+    .admin-nav { flex-direction: column; align-items: flex-end; gap: 8px; }
+    .partner-request { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* =========================================
+   TABLEAU DES RESERVATIONS - ADMIN
+   Charte graphique Honey Group
+   ========================================= */
+
+.admin-dashboard .container {
+    max-width: 1250px;
+}
+
+.admin-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 24px 0 36px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(13, 44, 84, 0.06);
+}
+
+.admin-reservations-table {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    color: #0D2C54;
+    text-align: left;
+}
+
+.admin-reservations-table thead th {
+    background: #0D2C54;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 16px 14px;
+    white-space: nowrap;
+    border-bottom: 3px solid #FCCC00;
+}
+
+.admin-reservations-table thead th:first-child {
+    border-top-left-radius: 11px;
+}
+
+.admin-reservations-table thead th:last-child {
+    border-top-right-radius: 11px;
+}
+
+.admin-reservations-table tbody td {
+    padding: 15px 14px;
+    border-bottom: 1px solid #edf1f7;
+    vertical-align: middle;
+    line-height: 1.6;
+}
+
+.admin-reservations-table tbody tr:nth-child(even) {
+    background: #f7f9fc;
+}
+
+.admin-reservations-table tbody tr:hover {
+    background: #fff9df;
+}
+
+.admin-reservations-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-reservations-table tbody td:first-child {
+    color: #0C60F0;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.admin-reservations-table tbody td:nth-child(2) {
+    min-width: 170px;
+    overflow-wrap: anywhere;
+}
+
+.admin-reservations-table tbody td:nth-child(2) small {
+    display: block;
+    margin-top: 4px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+.admin-reservations-table tbody td:nth-child(3) {
+    min-width: 200px;
+    overflow-wrap: anywhere;
+}
+
+.admin-reservations-table tbody td:nth-child(4) {
+    min-width: 180px;
+    white-space: nowrap;
+}
+
+.admin-reservations-table tbody td:nth-child(5),
+.admin-reservations-table tbody td:nth-child(6) {
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.admin-reservations-table tbody td:nth-child(7) {
+    white-space: nowrap;
+    font-weight: 600;
+    color: #9a6700;
+}
+
+/* Petit écran : le tableau défile horizontalement */
+@media (max-width: 768px) {
+    .admin-table-wrapper {
+        margin-top: 16px;
+        border-radius: 8px;
+    }
+
+    .admin-reservations-table {
+        min-width: 1050px;
+        font-size: 12px;
+    }
+
+    .admin-reservations-table thead th,
+    .admin-reservations-table tbody td {
+        padding: 12px;
+    }
+}
+/* Listes déroulantes, dans le même style que les champs */
+.search-bar-slim select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #D8E0EA;
+    border-radius: var(--radius);
+    background: #fff;
+    font-family: inherit;
+}
+.search-bar-slim select:focus {
+    outline: none;
+    border-color: var(--color-bleu);
+    box-shadow: 0 0 0 3px rgba(12, 96, 240, 0.15);
+}
